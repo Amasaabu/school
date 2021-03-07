@@ -1,0 +1,29 @@
+
+.label {
+    color: #3b3b3b;
+    font-weight: 600;
+    margin-top: 10px;
+    display: block;
+    letter-spacing: 2.1px;
+}
+
+.inputField {
+    background-color: #F1F1F1;
+    height: 35px;
+    width: 100%;
+    border: 1px solid #F1F1F1;
+    border-radius: 6px;
+    outline: none;
+    font-family: 'Roboto'; 
+    font-size: 15px;
+}
+
+.select {
+    background-color: #F1F1F1;
+    border: 1px solid #F1F1F1;
+     outline: none;
+     border-radius: 6px;
+    height: 35px;
+    width: 100%;
+
+}

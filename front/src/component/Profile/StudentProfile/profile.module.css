@@ -1,0 +1,38 @@
+
+.container {
+    width: 50vw;
+    min-height: 68vh;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 12px;
+    box-shadow: 0px 22px 40px #116060ab;
+    background-color: #2d423c;
+    padding: 1px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profilePicture {
+    background-color: rgba(67, 139, 139, 0.384);
+    width: 35%;
+    height: 32vh;
+}
+
+.profileBody {
+    font-family: 'Ubuntu', sans-serif;
+    color: thistle;
+    font-size: 25px;
+
+}
+
+@media (max-width: 600px) {
+ .container {
+   padding: 20px;
+   display: block;
+ }
+ .profilePicture {
+     height: 25vh;
+     margin: auto;
+ }
+}

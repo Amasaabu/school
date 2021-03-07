@@ -1,0 +1,20 @@
+.btn {
+    width: 75px;
+    font-family: 'Ubuntu';
+    cursor: pointer;
+    font-size: 15px;
+    border-radius: 5px;
+    outline: none;
+    border: 1px solid;
+    margin-left: 9px;
+    color: whitesmoke;
+}
+
+.Delete {
+    background-color: rgb(131, 43, 43);
+    box-shadow: 0px 0px 3px 0px red;
+}
+
+.Edit {
+    background-color: rgb(23, 107, 79);
+}

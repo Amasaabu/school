@@ -1,0 +1,19 @@
+.container {
+    min-height: 89vh;
+    width: 100%;
+    background-color: #C8C8C8;
+    display: flex;
+}
+@media (max-width: 600px) {
+ .sidebar {
+   width: 40%;
+ }
+}
+.sidebar {
+    width: 25%;
+}
+
+.content {
+    padding: 50px;
+    width: 70vw;
+}

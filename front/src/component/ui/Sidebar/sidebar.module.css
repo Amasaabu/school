@@ -1,0 +1,28 @@
+.sidebar {
+    background-color: #504f4f;
+    width: 100%;
+    min-height: 100%;
+    padding: 20px;
+    word-break: break-all;
+}
+.profilePicture {
+    width: 100px;
+    height: 100px;
+    border-radius: 100px;
+    background-color: burlywood;
+    margin: auto;
+    margin-bottom: 25px;
+}
+
+.sidebarContent{
+    margin: auto;
+    width: fit-content;
+    font-size: 20px;
+}
+
+.listItem {
+    margin-bottom: 20px;
+    color:  #E1CADD;
+    cursor: pointer;
+    font-family: 'Ubuntu', sans-serif;
+}

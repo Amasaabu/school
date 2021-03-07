@@ -1,0 +1,23 @@
+
+.header {
+    display: flex;
+    justify-content: space-between;
+
+    margin-top: 10px;
+    font-weight: 600;
+    font-size: 25px;
+    color: #2e2424;
+    font-family: 'Ubuntu', sans-serif;
+}
+.logo {
+    margin-left: 120px;
+}
+
+.navigation {
+    display: flex;
+    width: 500px;
+    font-family: 'Ubuntu', sans-serif;
+    justify-content: space-around;
+    font-weight: 500;
+    font-size: 25px;
+}

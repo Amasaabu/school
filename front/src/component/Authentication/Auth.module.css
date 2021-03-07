@@ -1,0 +1,25 @@
+.form {
+    box-sizing: border-box;
+    padding: 20px;
+    width: 320px;
+    height: 500px;
+    background-color: #D5D5D5;
+    margin-left: 73%;
+    margin-top: 50px;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+ .form {
+    margin: auto;
+ }
+}
+h5{
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+.alert {
+    width: 90%;
+    margin: auto;
+}
