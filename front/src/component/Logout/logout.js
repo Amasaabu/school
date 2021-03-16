@@ -5,7 +5,6 @@ import * as actions from '../../store/actions/index'
 const Logout = (props) => {
 
     const dispatch = useDispatch()
-
     useEffect(()=>{
         dispatch(actions.SIGN_OUT())
         props.history.push('/')
@@ -13,7 +12,7 @@ const Logout = (props) => {
 
     return (
         <div>
-           
+
         </div>
     )
 }

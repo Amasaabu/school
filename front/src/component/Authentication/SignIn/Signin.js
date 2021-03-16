@@ -55,6 +55,7 @@ const SignIn = (props) => {
         <div>
             {form}
             <Button clicked={()=>props.clicked(formData.form.email.value, formData.form.password.value)} btnType={'alert'}>SIGN-IN</Button>
+            <span onClick={props.SignUpWithFb} style={{ cursor: 'pointer', display: 'block', marginBottom: '9px', marginTop: '5px' }}>SignIn with facebook</span>
         </div>
     )
 }

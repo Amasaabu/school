@@ -13,7 +13,7 @@ const initialState={
   newUser: null
 }
 
- const profileReducer = (state=initialState, actions)=>{
+ const profileReducer = (state={...initialState, error: ''}, actions)=>{
     switch(actions.type){
       case actionTypes.BEFORE_SIGNUP:
         return {

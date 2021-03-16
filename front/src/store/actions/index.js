@@ -1,6 +1,7 @@
 export{
     signUp,
-    SIGN_OUT
+    SIGN_OUT,
+    checkAuthState
 } from './userProfile'
 
 export {

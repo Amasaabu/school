@@ -8,15 +8,32 @@ import SubjectRouter from './routes/subject.js'
 import ResultRouter from './routes/result.js'
 import Session from './routes/session.js'
 import path from 'path'
-
+import FbStrategy from './Passport/strategy.js'
+import passport from 'passport'
+import cookieSession from 'cookie-session'
+//facebook Auth Starting point
 connectDb()
 const app = express()
-const port =  process.env.PORT
+const port = process.env.PORT
+
+
 app.use(express.json())
+
+app.use(cookieSession({
+    name: 'token',
+    keys: ['key1']
+}))
 app.use('/user', UserRouter)
 app.use('/subject', SubjectRouter)
 app.use('/result', ResultRouter)
 app.use('/session', Session)
+
+app.get('/auth/facebook',passport.authenticate('facebook'));
+
+app.get('/auth/facebook/cb',passport.authenticate('facebook', {session: false}),(req, res) => {
+    req.session.cookietoken = req.user.token
+    res.redirect('http://localhost:3000')
+    });
 
 
 const __dirname = path.resolve()
@@ -27,6 +44,9 @@ if (process.env.NODE_ENV==='production') {
         res.sendFile(path.resolve(__dirname, '/front', 'build', 'index.html' ))
     })
 }
+
+
+
 
 app.use((req,res,next)=>{
     res.status(404)

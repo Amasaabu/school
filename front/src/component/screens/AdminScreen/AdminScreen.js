@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import classes from './AdminScreen.module.css'
 import Sidebar from '../../ui/Sidebar/sidebar'
-import {Switch, Route} from 'react-router-dom'
+import {Switch, Route, Redirect} from 'react-router-dom'
 import Registration from '../../ui/forms/Registration/registration'
 import Lecturers from '../../Lecturers/lecturers'
 import Newsubject from '../../NewSubject/Newsubject'
@@ -10,7 +10,7 @@ import EditForm from '../../ui/forms/EditForm/editForm'
 import Publishresult from '../../ui/forms/Publishresult/publishresult'
 import Result from '../../Results/ResultSearch'
 import AcademicSession from '../../ui/forms/Session/AcademicSession'
-
+import {useSelector} from 'react-redux'
 
 const AdminProfile = () => {
     const [sideItems] = useState(
@@ -23,9 +23,19 @@ const AdminProfile = () => {
             {item: 'Sessions', url: `/adminprofile/sessions`},
             { item: 'Lecturers', url: `/adminprofile/Lecturers` },
         ])
+    const profile = useSelector(state => {
+        return {
+            profile: state.userProfile.profileData,
+        }
+    })
+    let redirect = ''
 
+    if (!profile.profile.profileType) {
+        redirect = <Redirect to='/' />
+    }
     return (
         <div className={classes.container}>
+            {redirect}
             <div className={classes.sidebar}>
                 <Sidebar items={sideItems}/>
             </div>

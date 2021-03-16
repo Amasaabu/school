@@ -31,8 +31,7 @@ const SignUp = (props) => {
             }
         }
     })
-
-    
+  
 
     const formArray = []
     for (const key in formData.form) {
@@ -73,6 +72,7 @@ const SignUp = (props) => {
             </div>
             <Button clicked={()=>props.clicked(formData.form.email.value, formData.form.password.value, formData.form.username.value, formData.form.select.value)}
              btnType={'green'}>SIGN-UP</Button>
+             <span  onClick={props.SignUpWithFb} style={{cursor: 'pointer',display:'block', marginBottom: '9px', marginTop: '5px'}}>SignUp with facebook</span>
         </div>
     )
 }

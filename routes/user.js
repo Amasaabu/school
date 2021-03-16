@@ -36,6 +36,38 @@ router.post('/login', async (req, res, next) => {
     }
 })
 
+//logout by clearing cookies
+router.get('/logout', (req,res,next)=>{
+    try {
+        req.session = null
+        res.send('done')
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.get('/cookieAuthState',async (req,res,next)=>{
+    try {
+    if (req.session.cookietoken) {
+        const token = (req.session.cookietoken)
+       const validUser = await Users.findOne({['tokens.token']: token})
+       if (validUser) {
+           res.send({validUser, token})
+           return 
+       } else {
+           res.status(404).send('Reauthenticate')
+           return
+       }
+         
+    }
+        throw new Error('Authenticate before verification of token')
+    } catch (error) {
+        res.status(404)
+        next(error)
+    }
+   
+})
+
 //to get user Profile with auth
 router.get('/profile', auth, (req, res, next) => {
     try {
