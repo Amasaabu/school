@@ -50,7 +50,7 @@ const Auth = () => {
 
    
     const SignUpWithFb = () => {
-        window.open("http://localhost:3001/auth/facebook", "_self");
+        window.open("https://amasaschool.herokuapp.com/auth/facebook", "_self");
     }
 
     const [error, setError] = useState(profile.error)

@@ -33,7 +33,7 @@ app.get('/auth/facebook',passport.authenticate('facebook'));
 app.get('/auth/facebook/cb',passport.authenticate('facebook', {session: false}),(req, res) => {
     req.session.cookietoken = req.user.token
     if (process.env.NODE_ENV==='production') {
-        res.redirect('https://amasaschool.herokuapp.com/')
+        res.redirect('/')
     } else {
         res.redirect('http://localhost:3000')
     }
