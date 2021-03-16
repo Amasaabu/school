@@ -6,7 +6,7 @@ import User from '../models/User.js'
 export default passport.use(new FacebookStrategy({
     clientID: process.env.clientID,
     clientSecret: process.env.clientSecret,
-    callbackURL: '/auth/facebook/cb',
+    callbackURL: 'https://amasaschool.herokuapp.com/auth/facebook/cb',
     profileFields: ['id', 'last_name', 'email']
 },  
     function (accessToken, refreshToken, profile, cb){
