@@ -32,7 +32,12 @@ app.get('/auth/facebook',passport.authenticate('facebook'));
 
 app.get('/auth/facebook/cb',passport.authenticate('facebook', {session: false}),(req, res) => {
     req.session.cookietoken = req.user.token
-    res.redirect('http://localhost:3000')
+    if (process.env.NODE_ENV==='/') {
+        res.redirect()
+    } else {
+        res.redirect('http://localhost:3000')
+    }
+    
     });
 
 
