@@ -5,6 +5,7 @@ import * as actions from '../../../../store/actions/index'
 import {useSelector, useDispatch} from 'react-redux'
 import withErrorHandler from '../../../../hoc/withErrorHandler'
 import {Toast} from 'react-bootstrap'
+import axios from 'axios'
 
 const Registration = () => {
    
@@ -62,6 +63,7 @@ const Registration = () => {
         }
     })
     
+    const [image, setimage] = useState('')
 
     const submitHandler=()=>{
         const data = {
@@ -70,7 +72,8 @@ const Registration = () => {
             sex: formData.sex.value,
             email: formData.email.value,
             profileType: formData.profileType.value,
-            class: formData.class.value
+            class: formData.class.value,
+            profileImage: image
         }
         dispatch(actions.createUser(data))
     }
@@ -112,10 +115,32 @@ const Registration = () => {
         <Toast.Header><strong style={{ marginRight: 'auto' }}>ALERT</strong></Toast.Header>
         <Toast.Body>{profileData.newUser.username} was sucessfully createrd!</Toast.Body>
     </Toast>) : null
+
+    
+    const fileUploadHandlers =async (e)=>{
+        try {
+        console.log(e.target.files[0].name)  
+        const file = e.target.files[0]
+        const formData = new FormData()
+        formData.append('image', file)
+        const {data} = await axios.post('/uploads/images', formData, {
+            headers: {
+                'content-type': 'multipart/form-data'
+            }
+        })
+            console.log(data);
+            setimage(data)
+        } catch (error) {
+            console.log(error);
+        }
+        
+    }
     return (
         <div>
             {alert}
             {profileData.profile.loading?'Loading':form}
+
+            <input onChange={fileUploadHandlers} type='file'></input>
             <div style={{width: '80px'}}>
                 <Button clicked={submitHandler} btnType='green'>Submit</Button>
             </div>
@@ -124,4 +149,4 @@ const Registration = () => {
     )
 }
 
-export default withErrorHandler(Registration)
+export default (Registration)

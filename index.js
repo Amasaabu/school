@@ -8,6 +8,7 @@ import SubjectRouter from './routes/subject.js'
 import ResultRouter from './routes/result.js'
 import Session from './routes/session.js'
 import path from 'path'
+import Uploads from './routes/uploads.js'
 
 connectDb()
 const app = express()
@@ -17,9 +18,12 @@ app.use('/user', UserRouter)
 app.use('/subject', SubjectRouter)
 app.use('/result', ResultRouter)
 app.use('/session', Session)
+app.use('/uploads', Uploads)
 
 
 const __dirname = path.resolve()
+app.use('/uploads', express.static(path.join(__dirname, '/uploads') ))
+
 
 if (process.env.NODE_ENV==='production') {
     app.use(express.static(path.join(__dirname, '/front/build/')))

@@ -38,6 +38,9 @@ const UserSchema = new mongoose.Schema({
         required: true,
         default: 'student'
     },
+    profileImage: {
+        type: String
+    },
     tokens: [tokenSchema]
 })
 

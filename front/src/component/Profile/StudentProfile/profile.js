@@ -9,9 +9,13 @@ const Profile = () => {
         }
     })
     const {profile} = profileData
+    console.log(`http://localhost:3000${profile.profileImage}`)
     return (
         <div className={classes.container}>
-            <div className={classes.profilePicture}></div>
+            <div className={classes.profilePicture}>
+                <img class="fit-picture"
+                src={`http://localhost:3000${profile.profileImage}`}
+                alt="Profiless"/></div>
             <div className={classes.profileBody}>
                 <div><span>Name: </span>{profile.username}</div>
                 <div><span>Sex: </span>{profile.sex}</div>
