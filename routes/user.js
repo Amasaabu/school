@@ -3,6 +3,9 @@ import Subject from '../models/Subject.js'
 import Users from '../models/User.js'
 import { auth, checkAdmin, checkLectAdmin } from '../middleware/auth.js'
 import User from '../models/User.js'
+import ResetModel from '../models/ResetModel.js'
+import ResetModelSchema from '../models/ResetModel.js'
+import sgrid from '../sgrid/sgrid.js'
 
 const router = new express.Router()
 
@@ -134,6 +137,57 @@ router.get('/user', auth, checkLectAdmin, async(req,res, next)=>{
     }
 })
 
+//forgot password
+router.post('/reset', async(req,res,next)=>{
+    try {
+        const user_email = req.body.email
+        const user = await Users.findOne({email: user_email})
+        if (user) {
+            //check if user has attempted to reset before
+            const attemptedData = await ResetModelSchema.findOne({user_id: user._id})
+            if (attemptedData) {
+                const token = await attemptedData.generateResetToken()
+                // send email with instructions here 
+                sgrid(user.email, process.env.MY_EMAIL, 'RESET PASSWORD', `http://localhost:3001/passwordForm/${token}`)
+                res.send({id: user._id, token})
+                return
+            }
+            const resetData = new ResetModelSchema({
+                user_id: user._id 
+            })
+            const token = await resetData.generateResetToken()
+            sgrid(user.email, process.env.myEmail, 'RESET PASSWORD', token)
+            res.send({id : user._id, token})
+        } else {
+            const error = new Error('you appear not to be a user')
+            next(error)
+        }
+    } catch (error) {
+        next(error)
+    }
+})
+
+router.post('/reset/:token', async(req,res,next)=>{
+    try {
+        const token = req.params.token
+        console.log(token);
+        console.log(req.body.password);
+        const data = await ResetModelSchema.findOne({'tokens.token': token})
+        if (data) {
+            const user = await User.findOne({_id: data.user_id})
+            if (user) {
+                user.password = req.body.password
+                await user.save()
+                res.send()
+                return
+            }
+        } else {
+            next('Something went wrong')
+        }
+    } catch (error) {
+        next(error)
+    }
+})
 
 // const test =async()=>{
 //     // const de = await Users.findOne({ profileType: 'lecturer' })

@@ -49,3 +49,10 @@ app.use((err,req,res,next)=>{
 
 
 app.listen(port, ()=>console.log(`server is runnung on port ${port}`))
+// const arr1 = [1,2]
+// const arr2 = ['ade']
+// const arr3 = arr1.push(arr2)
+// console.log(arr1);
+
+// // [ 1, 2, 'ade' ]
+// //push [ 1, 2, [ 'ade' ] ]
