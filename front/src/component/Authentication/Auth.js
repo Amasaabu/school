@@ -57,9 +57,7 @@ const Auth = () => {
                     </div>
                 </div>:null}
             {showLogin?<SignIn clicked={submitHandler}/>:<SignUp clicked={submitHandler}/>}
-            <h5 
-                onClick={switchLogin}>
-                {showLogin?'I dont have an account':'Already Have An Account, Sign-In?'}</h5>
+            <h5 onClick={switchLogin}> {showLogin?'I dont have an account':'Already Have An Account, Sign-In?'}</h5>
         </div>
         </>
     )

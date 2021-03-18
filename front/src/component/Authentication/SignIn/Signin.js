@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Input from '../../ui/input/input'
 import Button from '../../ui/Button/button'
+import {NavLink} from 'react-router-dom'
 
 const SignIn = (props) => {
     const [formData, setFormData] = useState({
@@ -55,6 +56,7 @@ const SignIn = (props) => {
         <div>
             {form}
             <Button clicked={()=>props.clicked(formData.form.email.value, formData.form.password.value)} btnType={'alert'}>SIGN-IN</Button>
+            <h2><NavLink to='/reset'>Forgot Password</NavLink></h2>
         </div>
     )
 }
