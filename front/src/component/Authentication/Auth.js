@@ -72,7 +72,11 @@ const Auth = () => {
     </div>)
     return (
         <> 
-            {error?alertErr:null}          
+            {error?alertErr:null}  
+        <div className={classes.instructions}>
+            <h3>Instructions</h3>
+            <p>You can log in as an administrator by using 'test@test.com' as username and 'testtest' as password. Note: This is not a production build!</p>
+        </div>        
         <div className={classes.form}>
                 <Redirect to={url} /> 
                 {profile.loading? <div className="d-flex justify-content-center">
