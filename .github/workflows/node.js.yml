@@ -26,6 +26,6 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: cd front
-    - run: cd front && npm run buid --if-present
+    - run: npm run buid --if-present
     - run: cd ..
     - run: npm run start
