@@ -27,5 +27,5 @@ jobs:
     - run: npm install
     - run: cd front
     - run: cd front && npm run buid --if-present
-    - run: cd..
+    - run: cd ..
     - run: npm run start
